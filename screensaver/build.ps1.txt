@@ -1,0 +1,12 @@
+Build notes (Windows screensaver host)
+--------------------------------------
+Needs the Microsoft.Web.WebView2 NuGet package (net462 assemblies + runtimes\win-*\native\WebView2Loader.dll).
+Compile (Mono mcs or csc), AnyCPU, WinExe, output name SagaDiorama.scr:
+
+  mcs -platform:anycpu -target:winexe -out:SagaDiorama.scr \
+      -r:Microsoft.Web.WebView2.Core.dll -r:Microsoft.Web.WebView2.WinForms.dll \
+      -r:System.Windows.Forms.dll -r:System.Drawing.dll Program.cs
+
+Layout next to the .scr:  diorama.html (copy of ../index.html), the two WebView2 DLLs,
+and runtimes\win-x64|win-x86|win-arm64\native\WebView2Loader.dll.
+A ready-made package is attached to the GitHub Release.
